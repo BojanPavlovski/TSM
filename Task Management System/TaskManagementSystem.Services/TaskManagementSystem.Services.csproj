@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="XAct.Core.PCL" Version="0.0.5014" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\TaskManagementSystem.DataAccess\TaskManagementSystem.DataAccess.csproj" />
     <ProjectReference Include="..\TaskManagementSystem.Dto\TaskManagementSystem.Dto.csproj" />
     <ProjectReference Include="..\TaskManagementSystem.Mappers\TaskManagementSystem.Mappers.csproj" />
