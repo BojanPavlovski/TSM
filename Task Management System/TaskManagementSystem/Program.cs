@@ -58,6 +58,7 @@ builder.Services.AddScoped<ITaskRepository, TaskModelRepository>();
 builder.Services.AddScoped<ITaskModelService, TaskModelService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddDbContext<TaskManagementSystemDbContext>(options =>
     options.UseSqlServer("Server=.\\SQLExpress;Database=TaskManagementDb;Trusted_Connection=True;TrustServerCertificate=True"));
 

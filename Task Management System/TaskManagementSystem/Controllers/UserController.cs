@@ -16,9 +16,10 @@ namespace TaskManagementSystem.Controllers
         {
             _userService = userService;
         }
+        //a method that registers a user
         [AllowAnonymous]
         [HttpPost("registerUser")]
-        public IActionResult RegisterAdmin([FromBody] AddUserDto model)
+        public IActionResult RegisterUser([FromBody] AddUserDto model)
         {
             try
             {
@@ -30,6 +31,7 @@ namespace TaskManagementSystem.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred!");
             }
         }
+        //a method that allows a user to login, generating a token  later used for athorization
         [AllowAnonymous]
         [HttpPost("login")]
         public ActionResult<string> LogIn([FromBody] LogInDto model)
