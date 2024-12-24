@@ -92,13 +92,13 @@ namespace TaskManagementSystem.Controllers
         }
 
         //a method that gets a specific Task, based on Task name
-        [HttpGet("getTaskByTitle")]
-        public ActionResult GetTask(string taskName, int pageNumber, int pageSize)
+        [HttpGet("getTaskByTaskName")]
+        public ActionResult GetTaskByTaskName(string taskName, int pageNumber, int pageSize)
         {
             try
             {
                 //tries to make a call to the service layer(TaskModelService)
-                return Ok(_taskModelService.GetTask(taskName, pageSize, pageNumber));
+                return Ok(_taskModelService.GetTask(taskName, pageNumber, pageSize));
             }
             catch (Exception ex)
             {
@@ -108,11 +108,11 @@ namespace TaskManagementSystem.Controllers
         }
 
         [HttpGet("getTasksBasedOnDescription")]
-        public ActionResult GetTaskBasedOndDescription(string taskName, int pageNumber, int pageSize)
+        public ActionResult GetTaskBasedOndDescription(string taskDescription, int pageNumber, int pageSize)
         {
             try
             {
-                return Ok(_taskModelService.GetTasksBasedOnDescription(taskName, pageSize, pageNumber));
+                return Ok(_taskModelService.GetTasksBasedOnDescription(taskDescription, pageSize, pageNumber));
             }
             catch (Exception ex)
             {

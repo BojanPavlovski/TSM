@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagementSystem", "TaskManagementSystem.csproj", "{FBD60045-5474-4B11-8ACC-9A523E4F09EF}"
 EndProject
@@ -14,6 +14,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagementSystem.Dto", "..\TaskManagementSystem.Dto\TaskManagementSystem.Dto.csproj", "{51165262-B65B-4F03-A46E-459A1F6F41ED}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagementSystem.Mappers", "..\TaskManagementSystem.Mappers\TaskManagementSystem.Mappers.csproj", "{A88DB0EE-D4A1-440A-A892-8B5ECF1F0C1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagementSystem.Test", "..\TaskManagementSystem.Test\TaskManagementSystem.Test.csproj", "{A7882370-C788-40A3-A1F2-DADB59F86791}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9691BA31-5CCA-4E70-B9E2-7DFE04EFC942} = {9691BA31-5CCA-4E70-B9E2-7DFE04EFC942}
+		{FBD60045-5474-4B11-8ACC-9A523E4F09EF} = {FBD60045-5474-4B11-8ACC-9A523E4F09EF}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +51,10 @@ Global
 		{A88DB0EE-D4A1-440A-A892-8B5ECF1F0C1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A88DB0EE-D4A1-440A-A892-8B5ECF1F0C1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A88DB0EE-D4A1-440A-A892-8B5ECF1F0C1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7882370-C788-40A3-A1F2-DADB59F86791}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7882370-C788-40A3-A1F2-DADB59F86791}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7882370-C788-40A3-A1F2-DADB59F86791}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7882370-C788-40A3-A1F2-DADB59F86791}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -10,9 +10,7 @@ namespace TaskManagementSystem.Domain.Domain
 {
     public class AuditLog
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        
         public string? CreatedBy { get; set; }
         public string? UpdatedBy { get; set; }
         public DateTime? CreatedAt { get; set; }

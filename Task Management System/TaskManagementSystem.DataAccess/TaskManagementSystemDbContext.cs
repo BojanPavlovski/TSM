@@ -21,9 +21,14 @@ namespace TaskManagementSystem.DataAccess
         
         public DbSet<TaskModel> Tasks { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<AuditLog> AuditLogs { get; set; }
 
+        //public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        //{
 
+        //    AddAuditInfo();
+
+        //    return (await base.SaveChangesAsync(true, cancellationToken));
+        //}
         public override int SaveChanges()
         {
             AddAuditInfo();
@@ -33,13 +38,13 @@ namespace TaskManagementSystem.DataAccess
         private void AddAuditInfo()
         {
             var entities = ChangeTracker.Entries()
-                .Where(x => x.Entity is AuditLog &&
+                .Where(x => x.Entity is IAuditLog &&
                 (x.State == EntityState.Added) ||
                 x.State == EntityState.Modified ||
-                x.State == EntityState.Deleted);
+                x.State == EntityState.Deleted).ToList();
 
-            if(entities.Any())
-            {
+            
+            
                 var timeStamp = DateTime.Now;
                 var user = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
                 foreach(EntityEntry entry in entities)
@@ -47,24 +52,23 @@ namespace TaskManagementSystem.DataAccess
                     var entity = entry.Entity;
                     if(entry.State == EntityState.Added)
                     {
-                        ((AuditLog)entry.Entity).UpdatedAt = timeStamp;
-                        ((AuditLog)entry.Entity).CreatedAt = timeStamp;
-                        ((AuditLog)entry.Entity).CreatedBy = user.ToString();
-                        ((AuditLog)entry.Entity).CreatedBy = user.ToString();
+                        ((IAuditLog)entry.Entity).UpdatedAt = timeStamp;
+                        ((IAuditLog)entry.Entity).CreatedAt = timeStamp;
+                        ((IAuditLog)entry.Entity).CreatedBy = user.ToString();
+                        ((IAuditLog)entry.Entity).UpdatedBy = user.ToString();
                     }
                     if(entry.State == EntityState.Modified)
                     {
-                        ((AuditLog)entry.Entity).UpdatedAt = timeStamp;
-                        ((AuditLog)entry.Entity).UpdatedBy = user.ToString();
+                        ((IAuditLog)entry.Entity).UpdatedAt = timeStamp;
+                        ((IAuditLog)entry.Entity).UpdatedBy = user.ToString();
                     }
                     if(entry.State == EntityState.Deleted)
                     {
-                        ((AuditLog)entry.Entity).UpdatedAt = timeStamp;
-                        ((AuditLog)entry.Entity).UpdatedBy = user.ToString();
-                        entry.State = EntityState.Modified;
+                        ((IAuditLog)entry.Entity).UpdatedAt = timeStamp;
+                        ((IAuditLog)entry.Entity).UpdatedBy = user.ToString();
                     }
                 }
-            }
+            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

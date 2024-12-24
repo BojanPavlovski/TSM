@@ -43,6 +43,16 @@ namespace TaskManagementSystem.DataAccess.Implementations
                 .ToList();
         }
 
+        //a method that makes a call to the database to retrieve a TaskModel resource based on task title(name)
+        public List<TaskModel> GetTaskByTitle(string taskTitle, int pageNumber, int pageSize)
+        {
+            //calling the database 
+            return _dbContext.Tasks.Where(x => x.Name.Contains(taskTitle))
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+        }
+
         public List<TaskModel> GetTaskByDescription(string description, int pageNumber, int pageSize)
         {
             return _dbContext.Tasks.Where(x =>  x.Description.Contains(description))
@@ -66,16 +76,6 @@ namespace TaskManagementSystem.DataAccess.Implementations
                 .ToList();
         }
 
-        //a method that makes a call to the database to retrieve a TaskModel resource based on task title(name)
-        public List<TaskModel> GetTaskByTitle(string taskTitle, int pageNumber, int pageSize)
-        {
-            //calling the database 
-            return _dbContext.Tasks
-                .Where(x => x.Name.Contains(taskTitle))
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
-                .ToList();
-        }
 
         public int GetTaskCount()
         {

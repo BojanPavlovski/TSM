@@ -62,19 +62,11 @@ namespace TaskManagementSystem.Services.Implementations
         //a method that makes a call to the DataAccess layer(TaskModelRepository), to get Task resource based on Task name
         public List<TaskModelDto> GetTask(string taskName, int pageSize, int pageNumber)
         {
-            //validation
-            if (string.IsNullOrEmpty(taskName))
-            {
-                throw new Exception("Task name must be valid");
-            }
-            else
-            {
                 //calling the repository to get Task resource based on task name
                 List<TaskModel> taskModel = _taskModelRepository.GetTaskByTitle(taskName, pageSize, pageNumber);
                 List<TaskModelDto> mappedModels = taskModel.Select(x => TaskMapper.toTaskDto(x)).ToList();
                 //mapping and returning Task
                 return mappedModels;
-            }
         }
 
         public int GetTaskCount()
