@@ -31,10 +31,10 @@ namespace TaskManagementSystem.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred!");
             }
         }
-        //a method that allows a user to login, generating a token  later used for athorization
+        //a method that allows a user to login, generating a token  later used for authorization
         [AllowAnonymous]
         [HttpPost("login")]
-        public ActionResult<string> LogIn([FromBody] LogInDto model)
+        public ActionResult LogIn([FromBody] LogInDto model)
         {
             try
             {

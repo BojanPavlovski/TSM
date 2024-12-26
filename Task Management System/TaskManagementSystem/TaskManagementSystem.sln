@@ -15,11 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagementSystem.Dto", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagementSystem.Mappers", "..\TaskManagementSystem.Mappers\TaskManagementSystem.Mappers.csproj", "{A88DB0EE-D4A1-440A-A892-8B5ECF1F0C1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagementSystem.Test", "..\TaskManagementSystem.Test\TaskManagementSystem.Test.csproj", "{A7882370-C788-40A3-A1F2-DADB59F86791}"
-	ProjectSection(ProjectDependencies) = postProject
-		{9691BA31-5CCA-4E70-B9E2-7DFE04EFC942} = {9691BA31-5CCA-4E70-B9E2-7DFE04EFC942}
-		{FBD60045-5474-4B11-8ACC-9A523E4F09EF} = {FBD60045-5474-4B11-8ACC-9A523E4F09EF}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagementSystem.Test", "..\TaskManagementSystem.Test\TaskManagementSystem.Test.csproj", "{6E489BF3-6A05-4AE2-9A13-9A8C3CDCA11D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,10 +47,10 @@ Global
 		{A88DB0EE-D4A1-440A-A892-8B5ECF1F0C1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A88DB0EE-D4A1-440A-A892-8B5ECF1F0C1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A88DB0EE-D4A1-440A-A892-8B5ECF1F0C1B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A7882370-C788-40A3-A1F2-DADB59F86791}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A7882370-C788-40A3-A1F2-DADB59F86791}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A7882370-C788-40A3-A1F2-DADB59F86791}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A7882370-C788-40A3-A1F2-DADB59F86791}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E489BF3-6A05-4AE2-9A13-9A8C3CDCA11D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E489BF3-6A05-4AE2-9A13-9A8C3CDCA11D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E489BF3-6A05-4AE2-9A13-9A8C3CDCA11D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E489BF3-6A05-4AE2-9A13-9A8C3CDCA11D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

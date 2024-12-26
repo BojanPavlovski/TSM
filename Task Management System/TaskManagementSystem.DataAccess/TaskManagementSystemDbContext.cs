@@ -22,13 +22,6 @@ namespace TaskManagementSystem.DataAccess
         public DbSet<TaskModel> Tasks { get; set; }
         public DbSet<User> Users { get; set; }
 
-        //public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken))
-        //{
-
-        //    AddAuditInfo();
-
-        //    return (await base.SaveChangesAsync(true, cancellationToken));
-        //}
         public override int SaveChanges()
         {
             AddAuditInfo();
