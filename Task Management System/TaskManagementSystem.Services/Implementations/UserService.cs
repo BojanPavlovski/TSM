@@ -21,21 +21,23 @@ namespace TaskManagementSystem.Services.Implementations
         {
             _userRepository = userRepository;
         }
-
+        //a method that LogsIn the user, based on username and password and generates token for authorization
         public string LogIn(LogInDto logInDto)
         {
+            //validation
             if (string.IsNullOrEmpty(logInDto.Username) || string.IsNullOrEmpty(logInDto.Password))
             {
                 throw new Exception("Username and password are required fields.");
             }
             //generating hash
             string hash = GenerateHash(logInDto.Password);
+            //get user from db
             User user = _userRepository.GetUserByUserNameAndPassword(logInDto.Username, hash);
             if (user == null)
             {
                 throw new Exception("Invalid user login.");
             }
-
+            //configuration for generating the token
             JwtSecurityTokenHandler jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
             byte[] secretKeyBytes = Encoding.ASCII.GetBytes("Our very veryyyyyyyyyyyyyyy secret secret key");
 
@@ -59,7 +61,7 @@ namespace TaskManagementSystem.Services.Implementations
             string resultToken = jwtSecurityTokenHandler.WriteToken(token);
             return resultToken;
         }
-
+        //a method used for generating hashed passwords
         private static string GenerateHash(string password)
         {
             MD5CryptoServiceProvider mD5CryptoServiceProvider = new MD5CryptoServiceProvider();

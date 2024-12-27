@@ -18,7 +18,7 @@ namespace TaskManagementSystem.Controllers
         }
         //A method that returns a list of all the Tasks stored in the database
         [HttpGet]
-        public async Task<IActionResult> Get(int pageNumber, int pageSize)
+        public ActionResult Get(int pageNumber, int pageSize)
         {
             try
             {
@@ -91,7 +91,7 @@ namespace TaskManagementSystem.Controllers
             }
         }
 
-        //a method that gets a specific Task, based on Task name
+        //a method that returns a list of Tasks, based on Task name
         [HttpGet("getTaskByTaskName")]
         public ActionResult GetTaskByTaskName(string taskName, int pageNumber, int pageSize)
         {
@@ -106,23 +106,25 @@ namespace TaskManagementSystem.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+        //a method that returns a list of Tasks, based on description
         [HttpGet("getTasksBasedOnDescription")]
         public ActionResult GetTaskBasedOndDescription(string taskDescription, int pageNumber, int pageSize)
         {
             try
             {
+                //tries to make a call to the service layer(TaskModelService)
                 return Ok(_taskModelService.GetTasksBasedOnDescription(taskDescription, pageSize, pageNumber));
             }
             catch (Exception ex)
             {
+                //if an error occurs, return the message of the Exception
                 return BadRequest(ex.Message);
             }
         }
 
         //a method that returns a list of tasks, based on their completion status
         [HttpGet("getTasksBasedOnStatus")]
-        public ActionResult GetTasksBasedOnStatus(bool isCompleteed, int pageNumber = 1, int pageSize = 10)
+        public ActionResult GetTasksBasedOnStatus(bool isCompleteed, int pageNumber, int pageSize)
         {
             try
             {

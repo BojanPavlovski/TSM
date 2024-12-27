@@ -16,18 +16,21 @@ namespace TaskManagementSystem.Controllers
         {
             _userService = userService;
         }
-        //a method that registers a user
+        //a method that registers a user(adds user to database)
         [AllowAnonymous]
         [HttpPost("registerUser")]
         public IActionResult RegisterUser([FromBody] AddUserDto model)
         {
             try
             {
+                //tries to make a call to the service layer(UserService)
+                //if succesfull return Ok(200) status code
                 _userService.Register(model);
                 return Ok();
             }
             catch
             {
+                //if an error occurs return status code 500(InternalServerError)
                 return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred!");
             }
         }
@@ -38,11 +41,14 @@ namespace TaskManagementSystem.Controllers
         {
             try
             {
+                //tries to make a call to the service layer(UserService)
+                //if succesfull return status code ok(200)
                 string token = _userService.LogIn(model);
                 return Ok(token);
             }
             catch
             {
+                //if an error occurs return status code 500(InternalServerError)
                 return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred!");
             }
         }

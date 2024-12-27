@@ -68,15 +68,17 @@ namespace TaskManagementSystem.Services.Implementations
                 //mapping and returning Task
                 return mappedModels;
         }
-
+        //a method that makes a call to the DataAccess layer(TaskModelRepository), to get the count(total number) of Tasks stored in the database
         public int GetTaskCount()
         {
             return _taskModelRepository.GetTaskCount();
         }
-
+        //a method that makes a call to the DataAccess layer(TaskModelRepository) to get a list of tasks, based on description 
         public List<TaskModelDto> GetTasksBasedOnDescription(string description, int pageNumber, int pageSize)
         {
+            //calling the db
             List<TaskModel> taskModels = _taskModelRepository.GetTaskByDescription(description, pageSize, pageNumber);
+            //mapping
             List<TaskModelDto> mappedModels = taskModels.Select(x => TaskMapper.toTaskDto(x)).ToList();
             return mappedModels;
         }

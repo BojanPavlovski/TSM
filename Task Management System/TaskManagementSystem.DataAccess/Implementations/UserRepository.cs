@@ -15,13 +15,13 @@ namespace TaskManagementSystem.DataAccess.Implementations
         {
             _dbContext = dbContext;
         }
-
+        //a method that adds a user in the database
         public void AddUser(User user)
         {
             _dbContext.Add(user);
             _dbContext.SaveChanges();
         }
-
+        //a method that returns a user, based on given username and password
         public User GetUserByUserNameAndPassword(string userName, string password)
         {
             return _dbContext.Users.SingleOrDefault(x => x.Username == userName && x.Password == password);
